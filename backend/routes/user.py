@@ -89,8 +89,7 @@ def signup():
     code = 201
     return jsonify({
         "code": code,
-        "msg": f"Usuario {username} creado correctamente",
-        "timestamp": datetime.datetime.utcnow().isoformat()
+        "msg": f"Usuario {username} creado correctamente"
     }), code
 
 
