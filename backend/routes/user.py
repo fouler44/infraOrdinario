@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from flask import Blueprint, request, jsonify, redirect
 
 from flask_jwt_extended import create_access_token
@@ -89,7 +89,8 @@ def signup():
     code = 201
     return jsonify({
         "code": code,
-        "msg": f"Usuario {username} creado correctamente"
+        "msg": f"Usuario {username} creado correctamente",
+        "created_at": datetime.now().isoformat()
     }), code
 
 
