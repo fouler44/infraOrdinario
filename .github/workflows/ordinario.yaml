@@ -8,11 +8,17 @@ on:
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
+      - name: Checkout repository
       - uses: actions/checkout@v3
+
       - name: Build and push the Docker image
         run: |
           echo ${{ secrets.GHCR_PAT }} | docker login ghcr.io -u fouler44 --password-stdin          
           docker build . -t ghcr.io/fouler44/backend-ordinario:latest
           docker push ghcr.io/fouler44/backend-ordinario:latest
+
+      - name: Trigger render deploy
+        run: curl -X POST ${{ secrets.DEPLOY_HOOK }}
