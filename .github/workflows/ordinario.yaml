@@ -21,4 +21,4 @@ jobs:
           docker push ghcr.io/fouler44/backend-ordinario:latest
 
       - name: Trigger render deploy
-        run: curl -X POST ${{ secrets.DEPLOY_HOOK }}
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
